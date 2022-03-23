@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="http://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Pokedex</title>
+  </head>
+  <body>
+    <header>
+      <div class="pesquisa">
+        <input
+          type="text"
+          class="pesquisa-pokemon"
+          placeholder="Pesquise um pokemon..."
+        />
+        <input
+          type="text"
+          list="tipo"
+          class="pesquisa-tipo-um"
+          placeholder="Selecione um tipo..."
+        />
+        <input
+          type="text"
+          list="tipo"
+          class="pesquisa-tipo-dois"
+          placeholder="Selecione outro tipo..."
+        />
+        <button id="btnPesquisar" class="btnPesquisar">pesquisar</button>
+        <datalist id="tipo">
+          <option>fogo</option>
+          <option>água</option>
+          <option>gelo</option>
+        </datalist>
+      </div>
+      <div class="logo">
+        <img src="./img/logo.png" alt="" />
+      </div>
+    </header>
+
+    <main>
+      <div class="cards">
+        <div class="card">
+          <div class="conteudo">
+            <div class="card-imagem">
+              <img src="" alt="" />
+            </div>
+            <div class="card-informacoes">
+              <p>Bulbassalto</p>
+              <div class="card-elementos">
+                <div class="elemento-um">Planta</div>
+                <div class="elemento-dois">Veneno</div>
+              </div>
+            </div>
+          </div>
+          <div class="numero">
+            <p>#001</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

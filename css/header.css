@@ -1,0 +1,56 @@
+@import url('http://fonts.cdnfonts.com/css/pokemon-solid');
+
+
+
+header {
+    width: 100vw;
+    height:10.18vh;
+    background-color: #BA0000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0px 2.70vw ;
+}
+
+.pesquisa {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    width: auto;
+    height: 100%;
+    gap: 20px;
+}
+
+.pesquisa > input,
+.pesquisa > button {
+    border-radius: 20px;
+    border: 1px solid #2c2c2c;
+
+}
+
+.pesquisa-pokemon {
+    width: 21.05vw;
+    height: 5.29vh;
+    padding: 1vh 1vw;
+    font-size: clamp(0.5rem , 3vw, 1.6rem);
+}
+.pesquisa-tipo-um,
+.pesquisa-tipo-dois {
+    width: 11.64vw;
+    height: 2.55vh;
+    padding: .5vh .5vw;
+    font-size: clamp(0.5rem , 3vw, 0.9rem);
+}
+
+.btnPesquisar {
+    width: 8.42vw;
+    height: 2.55vh;
+    padding: 1vh 1vw;
+    background-color: #556A9E;
+    color: #fff;
+    font-size: clamp(0.5rem , 3vw, 0.9rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
