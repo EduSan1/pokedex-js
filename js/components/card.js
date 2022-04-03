@@ -42,7 +42,7 @@ const criarCard = async (index) => {
 
     card.setAttribute("class", "card");
     cardImage.setAttribute("class", "card-imagem");
-    imagemFundo.setAttribute("src", "../../img/fundo-pokebola.png");
+    imagemFundo.setAttribute("src", "img/fundo-pokebola.png");
     imagemPokemon.setAttribute("src", `${pokemon.sprites.front_default}`);
     cardConteudo.setAttribute("class", "conteudo");
     cardConteudoNumero.setAttribute("class", "numero");
