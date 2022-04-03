@@ -1,42 +1,34 @@
 "use strict";
 
-// let nav = document.createElement("nav");
-// nav.setAttribute("class","menu");
+// const todosPokemon = async () => {
+//     const url = `https://pokeapi.co/api/v2/pokemon`;
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     console.log(data.count)
+//     return data
+//   };
 
-// let ul = document.createElement("ul");
-// nav.appendChild(ul);
-const db = [
-    {
-        id: '1',
-        nome: 'Bulbassauro',
-        sprite: '../../img/pokemon/bulbassauro.png',
-        tipo: {
-            tipo1: "Planta",
-            tipo2: "Veneno"
-        }
-    },
-    {
-        id: '2',
-        nome: 'Charmander',
-        sprite: '../../img/pokemon/charmander.png',
-        tipo: {
-            tipo1: "fogo",
-        }
-    },
-    {
-        id: '3',
-        nome: 'Tartaruga de água',
-        sprite: '../../img/pokemon/tartaruga.png',
-        tipo: {
-            tipo1: "Água",
-            tipo2: "Veneno",
-            tipo3: "Gangue"
-        }
-    },
-]
-const criarCard = (pokemon) => {
+//   const numeroPokemons = todosPokemon()
+//   console.log(numeroPokemons)
+const container = document.querySelector('#cards-container')
+let index = 1;
 
-    let pokemonTipoTamanho = pokemon.tipo.length;
+const pesquisarPokemon = async (index) => {
+    
+    const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    // console.log(data)
+    return data
+  };
+
+const criarCard = async (index) => {
+
+    const pokemon = await pesquisarPokemon(index)
+    console.log(pokemon.name)
+
+    // let pokemonTipoTamanho = pokemon.tipo.length;
+    // console.log(pokemonTipoTamanho)
 
     let card = document.createElement("div");
     let cardImage = document.createElement("div");
@@ -44,33 +36,34 @@ const criarCard = (pokemon) => {
     let imagemPokemon = document.createElement("img");
     let cardConteudo = document.createElement("div");
     let cardConteudoNumero = document.createElement("div");
-    let textoNumero = document.createElement("p");
     let cardConteudoInformacao = document.createElement("div");
-    let textoNome = document.createElement("p");
+    let cardConteudoNome = document.createElement("div");
     let cardConteudoInformacaoElementos = document.createElement("div");
 
     card.setAttribute("class", "card");
     cardImage.setAttribute("class", "card-imagem");
     imagemFundo.setAttribute("src", "../../img/fundo-pokebola.png");
-    imagemPokemon.setAttribute("src", `${pokemon.sprite}`);
-    textoNumero.setAttribute("value", `${pokemon.id}`);
-    textoNome.setAttribute("value", `${pokemon.nome}`);
+    imagemPokemon.setAttribute("src", `${pokemon.sprites.front_default}`);
     cardConteudo.setAttribute("class", "conteudo");
     cardConteudoNumero.setAttribute("class", "numero");
+    cardConteudoNumero.textContent = `${pokemon.id}`;
+    cardConteudoNome.setAttribute("class", "nome");
+    cardConteudoNome.textContent = `${pokemon.name}`;
     cardConteudoInformacao.setAttribute("class", "card-informacoes");
     cardConteudoInformacaoElementos.setAttribute("class", "card-elementos");
 
-    for (let index = 0; index < pokemonTipoTamanho; index++) {
-        let cardConteudoInformacaoElemento = document.createElement("div");
-        cardConteudoInformacaoElemento.setAttribute("class", `elemento-${index}`);
-        cardConteudoInformacaoElemento.appendChild(pokemon.tipo[index]);
-        cardConteudoInformacaoElementos.appendChild(cardConteudoInformacaoElemento);
-    }
+    // for (let index = 0; index < pokemonTipoTamanho; index++) {
+        // let cardConteudoInformacaoElemento = document.createElement("div");
+        // // let elemento = document.createElement("div").textContent = `${pokemon.tipo.tipo1}`
+        // console.log(elemento)
+        // cardConteudoInformacaoElemento.setAttribute("class", "elemento-1");
+        // cardConteudoInformacaoElemento.textContent = elemento;
+        // console.log(cardConteudoInformacaoElemento);
+        // cardConteudoInformacaoElementos.appendChild(cardConteudoInformacaoElemento);
+    // }
 
-    cardConteudoInformacao.appendChild(textoNome);
-    cardConteudoInformacao.appendChild(cardConteudoInformacaoElementos);
-
-    cardConteudoNumero.appendChild(textoNumero);
+    cardConteudoInformacao.appendChild(cardConteudoNome);
+    // cardConteudoInformacao.appendChild(cardConteudoInformacaoElementos);
 
     cardConteudo.appendChild(cardConteudoNumero);
     cardConteudo.appendChild(cardConteudoInformacao);
@@ -81,35 +74,14 @@ const criarCard = (pokemon) => {
     card.appendChild(cardImage);
     card.appendChild(cardConteudo);
 
-
-    //contentText
     console.log(card)
-    return card;
-    {/* <div class="card" >
-    <div class="card-imagem">
-        <img src="./img/fundo-pokebola.png" alt="" />
-        <img src="./img/pokemon.png" alt="" />
-    </div>
-    <div class="conteudo">
-        <div class="numero">
-            <p>#001</p>
-        </div>
-        <div class="card-informacoes">
-            <p>Bulbassalto</p>
-            <div class="card-elementos">
-                <div class="elemento-um">Planta</div>
-                <div class="elemento-dois">Veneno</div>
-                <div class="elemento-dois">teste</div>
-            </div>
-        </div>
-    </div>
-</div> */}
+    container.appendChild(card);
 
+};
+// const pesquisar = document.getElementById("btnPesquisar");
+// pesquisar.addEventListener("click",criarCard)
+while ( index < 100 ){
+    criarCard(index)
+    index++
+    
 }
-
-const pokemons = db.map(criarCard)
-
-// console.log(pokemons)
-const container = document.querySelector('#cards-container')
-console.log(container)
-container.replaceChildren(...pokemons)
