@@ -12,6 +12,7 @@
 //   console.log(numeroPokemons)
 const container = document.querySelector('#cards-container')
 let index = 1;
+const pokemons = [];
 
 const pesquisarPokemon = async (index) => {
     
@@ -75,13 +76,20 @@ const criarCard = async (index) => {
     card.appendChild(cardConteudo);
 
     console.log(card)
-    container.appendChild(card);
+    pokemons[index-1] = card
+
+    if(pokemons.length == 898) {
+        container.replaceChildren(...pokemons)
+    }
 
 };
 // const pesquisar = document.getElementById("btnPesquisar");
 // pesquisar.addEventListener("click",criarCard)
-while ( index < 100 ){
+while ( index < 899 ){
     criarCard(index)
     index++
-    
 }
+
+console.log(pokemons)
+
+
