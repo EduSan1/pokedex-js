@@ -19,14 +19,13 @@ const pesquisarPokemon = async (index) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
     const response = await fetch(url);
     const data = await response.json();
-    // console.log(data)
     return data
   };
 
 const criarCard = async (index) => {
 
     const pokemon = await pesquisarPokemon(index)
-    console.log(pokemon.name)
+    // console.log(pokemon.name)
 
     // let pokemonTipoTamanho = pokemon.tipo.length;
     // console.log(pokemonTipoTamanho)
@@ -53,18 +52,24 @@ const criarCard = async (index) => {
     cardConteudoInformacao.setAttribute("class", "card-informacoes");
     cardConteudoInformacaoElementos.setAttribute("class", "card-elementos");
 
-    // for (let index = 0; index < pokemonTipoTamanho; index++) {
-        // let cardConteudoInformacaoElemento = document.createElement("div");
-        // // let elemento = document.createElement("div").textContent = `${pokemon.tipo.tipo1}`
-        // console.log(elemento)
-        // cardConteudoInformacaoElemento.setAttribute("class", "elemento-1");
-        // cardConteudoInformacaoElemento.textContent = elemento;
-        // console.log(cardConteudoInformacaoElemento);
-        // cardConteudoInformacaoElementos.appendChild(cardConteudoInformacaoElemento);
-    // }
+        let cardConteudoInformacaoElemento = document.createElement("div");
+        let elemento = document.createElement("div").textContent = `${pokemon.types[0].type.name}`
+        cardConteudoInformacaoElemento.setAttribute("class", `elemento-${pokemon.types[0].type.name}`);
+        cardConteudoInformacaoElemento.textContent = elemento;
+        cardConteudoInformacaoElementos.appendChild(cardConteudoInformacaoElemento);
+
+        if (pokemon.types.length == 2){
+
+            let cardConteudoInformacaoElemento2 = document.createElement("div");
+            let elemento2 = document.createElement("div").textContent = `${pokemon.types[1].type.name}`
+            cardConteudoInformacaoElemento2.setAttribute("class", `elemento-${pokemon.types[1].type.name}`);
+            cardConteudoInformacaoElemento2.textContent = elemento2;
+            cardConteudoInformacaoElementos.appendChild(cardConteudoInformacaoElemento2);
+
+        }
 
     cardConteudoInformacao.appendChild(cardConteudoNome);
-    // cardConteudoInformacao.appendChild(cardConteudoInformacaoElementos);
+    cardConteudoInformacao.appendChild(cardConteudoInformacaoElementos);
 
     cardConteudo.appendChild(cardConteudoNumero);
     cardConteudo.appendChild(cardConteudoInformacao);
@@ -75,21 +80,24 @@ const criarCard = async (index) => {
     card.appendChild(cardImage);
     card.appendChild(cardConteudo);
 
-    console.log(card)
+    // console.log(card)
     pokemons[index-1] = card
 
     if(pokemons.length == 898) {
+        container.setAttribute("class", "cards");
         container.replaceChildren(...pokemons)
     }
 
 };
 // const pesquisar = document.getElementById("btnPesquisar");
-// pesquisar.addEventListener("click",criarCard)
-while ( index < 899 ){
+
+
+// pesquisar.addEventListener("click",pesquisarPokemon)
+
+while ( index <= 898 ){
     criarCard(index)
     index++
 }
 
-console.log(pokemons)
 
 

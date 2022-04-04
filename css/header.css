@@ -31,16 +31,16 @@ header {
 
 .pesquisa-pokemon {
     width: 21.05vw;
-    height: 5.29vh;
+    height: 50%;
     padding: 1vh 1vw;
-    font-size: clamp(0.5rem , 3vw, 1.6rem);
+    font-size: clamp(0.5rem , 3vw, 1rem);
 }
 .pesquisa-tipo-um,
 .pesquisa-tipo-dois {
     width: 11.64vw;
-    height: 2.55vh;
+    height: 40%;
     padding: .5vh .5vw;
-    font-size: clamp(0.5rem , 3vw, 0.9rem);
+    font-size: clamp(0.1rem , 3vw, 0.6rem);
 }
 
 .btnPesquisar {
@@ -49,8 +49,18 @@ header {
     padding: 1vh 1vw;
     background-color: #556A9E;
     color: #fff;
-    font-size: clamp(0.5rem , 3vw, 0.9rem);
+    font-size: clamp(0.3rem , 1vw, 0.9rem);
     display: flex;
+    overflow: hidden;
     align-items: center;
     justify-content: space-around;
+}
+
+.logo {
+    width: 10%;
+    min-width: 60px;
+}
+
+.logo >img{
+    width: 100%;
 }
