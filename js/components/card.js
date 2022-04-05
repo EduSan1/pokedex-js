@@ -4,15 +4,14 @@
 //     const url = `https://pokeapi.co/api/v2/pokemon`;
 //     const response = await fetch(url);
 //     const data = await response.json();
-//     console.log(data.count)
 //     return data
 //   };
 
 //   const numeroPokemons = todosPokemon()
-//   console.log(numeroPokemons)
 const container = document.querySelector('#cards-container')
 let index = 1;
 const pokemons = [];
+
 
 const pesquisarPokemon = async (index) => {
     
@@ -25,10 +24,8 @@ const pesquisarPokemon = async (index) => {
 const criarCard = async (index) => {
 
     const pokemon = await pesquisarPokemon(index)
-    // console.log(pokemon.name)
 
     // let pokemonTipoTamanho = pokemon.tipo.length;
-    // console.log(pokemonTipoTamanho)
 
     let card = document.createElement("div");
     let cardImage = document.createElement("div");
@@ -80,7 +77,6 @@ const criarCard = async (index) => {
     card.appendChild(cardImage);
     card.appendChild(cardConteudo);
 
-    // console.log(card)
     pokemons[index-1] = card
 
     if(pokemons.length == 898) {
@@ -89,13 +85,14 @@ const criarCard = async (index) => {
     }
 
 };
-// const pesquisar = document.getElementById("btnPesquisar");
+const pesquisar = document.getElementById("btnPesquisar");
 
 
-// pesquisar.addEventListener("click",pesquisarPokemon)
+// pesquisar.addEventListener("click",filtrarPokemons)
 
 while ( index <= 898 ){
     criarCard(index)
+    console.log(index)
     index++
 }
 

@@ -120,7 +120,9 @@
 .elemento-dragon,
 .elemento-psychic,
 .elemento-fighting,
-.elemento-flying
+.elemento-flying,
+.elemento-steel,
+.elemento-dark
 {
     padding: 5px;
     min-width: 60px;
@@ -145,6 +147,8 @@
 .elemento-psychic{background-color: #f85888 ;}
 .elemento-fighting{background-color: #c03028 ;}
 .elemento-flying{background-color: #74a0f3 ;}
+.elemento-steel{background-color: #C0C0C0 ; }
+.elemento-dark{background-color: #242424 ; color: white;}
 
 @media (max-width:600px) {
     .cards {
