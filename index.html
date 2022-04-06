@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
-    <script src="./js/pesquisa.js" defer></script>
-    <script src="./js/components/card.js" defer></script>
+    <script src="./js/pesquisa.js" defer type="module" ></script>
+    <script src="./js/components/card.js" defer type="module"></script>
     <script src="./js/main.js" defer></script>
 
     <title>Pokedex</title>
@@ -24,6 +24,7 @@
       <div class="pesquisa">
         <input
           type="text"
+          list="pokemonsNome"
           class="pesquisa-pokemon"
           placeholder="Pesquise um pokemon..."
         />
@@ -33,13 +34,11 @@
           class="pesquisa-tipo-um"
           placeholder="Selecione um tipo..."
         />
-        <input
-          type="text"
-          list="tipo"
-          class="pesquisa-tipo-dois"
-          placeholder="Selecione outro tipo..."
-        />
+
         <button id="btnPesquisar" class="btnPesquisar">pesquisar</button>
+        <datalist id="pokemonsNome">
+
+        </datalist>
         <datalist id="tipo">
 
         </datalist>

@@ -21,9 +21,10 @@ const pesquisarPokemon = async (index) => {
     return data
   };
 
-const criarCard = async (index) => {
+// const criarCard = async (index) => {
+    const criarCard = async (pokemon) => {
 
-    const pokemon = await pesquisarPokemon(index)
+    // const pokemon = await pesquisarPokemon(index)
 
     // let pokemonTipoTamanho = pokemon.tipo.length;
 
@@ -77,24 +78,35 @@ const criarCard = async (index) => {
     card.appendChild(cardImage);
     card.appendChild(cardConteudo);
 
-    pokemons[index-1] = card
+    // pokemons.push(card)
+    return card
 
-    if(pokemons.length == 898) {
-        container.setAttribute("class", "cards");
-        container.replaceChildren(...pokemons)
-    }
+    // if(pokemons.length == 51) {
+    //     container.setAttribute("class", "cards");
+    //     container.replaceChildren(...pokemons)
+    // }
 
 };
-const pesquisar = document.getElementById("btnPesquisar");
 
+const gerarCars = async () => {
 
-// pesquisar.addEventListener("click",filtrarPokemons)
+    while ( index <= 151 ){
+        const pokemon = await pesquisarPokemon(index)
+        pokemons.push(await criarCard(pokemon))
+        index++
 
-while ( index <= 898 ){
-    criarCard(index)
-    console.log(index)
-    index++
+    } 
+
+    container.setAttribute("class", "cards");
+    container.replaceChildren(...pokemons)
+
 }
+
+gerarCars()
+
+export {pesquisarPokemon,criarCard}
+
+
 
 
 

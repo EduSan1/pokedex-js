@@ -1,55 +1,96 @@
-const pesquisarTipo = async (index) => {
+import {pesquisarPokemon,criarCard} from "./components/card.js";
+const container = document.querySelector('#cards-container')
+
+const pokemonsPesquisa = [];
+ 
+ const pesquisarTipos = async () => {
     const url = "https://pokeapi.co/api/v2/type/";
     const response = await fetch(url);
     const data = await response.json();
-
-    return data.results[index].name
-
-  };
-
-  const pesquisarTiposTamanho = async () => {
-    const url = "https://pokeapi.co/api/v2/type/";
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.results.length
+    return data.results
 
   };
 
-  const CarregarTipoo = async() => {
-    const tipos = await pesquisarTiposTamanho()
+  const CarregarTipo = async() => {
+    const tipos = await pesquisarTipos()
     const lista = document.querySelector('#tipo')
 
-    for(let index = 0;index <= tipos; index++) {
-        const tipo = await pesquisarTipo(index)
+    for(let index = 0;index < tipos.length; index++) {
+        const tipo = tipos[index].name
         let option = document.createElement("option")
         option.textContent = `${tipo}`
         lista.appendChild(option);
     }
   }
-  
-  CarregarTipoo();
+  CarregarTipo();
 
-//   const listaTipos = pesquisarTipo();
+  const pesquisar = document.querySelector('#btnPesquisar')
+  const pokemonsNome = document.querySelector('#pokemonsNome')
+  const pesquisaTipoUm = document.querySelector('.pesquisa-tipo-um')
+  const pesquisaTipoDois = document.querySelector('.pesquisa-tipo-dois')
 
-  const gerarLista = async (tipo) => {
+  // const filtrarPokemon = async (index) => {
+  //   const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
+  //   const response = await fetch(url);
+  //   const data = await response.json();
+  //   return data
+  // }
 
-     let option = document.createElement("option")
-     option.setAttribute("class", "teste");
-    return option    
+  const gerarNomePokemons = async () => {
 
-    // let pokemonTipoTamanho = pokemon.tipo.length;               .textContent = `${tipo}`
+    for(let index = 1;index < 151; index++) {
+      const pokemon = await pesquisarPokemon(index)
+      console.log(pokemon)
 
-    // let card = document.createElement("div");
-    // imagemFundo.setAttribute("src", "img/fundo-pokebola.png");
-    // imagemPokemon.setAttribute("src", `${pokemon.sprites.front_default}`);
-    //     let elemento = document.createElement("div").textContent = `${pokemon.types[0].type.name}`
-    //     cardConteudoInformacaoElemento.setAttribute("class", `elemento-${pokemon.types[0].type.name}`);
-    //     cardConteudoInformacaoElemento.textContent = elemento;
-    // card.appendChild(cardImage);
-    //     container.replaceChildren(...pokemons)
+      let option = document.createElement("option")
+      option.textContent = `${pokemon.name}`
+      pokemonsNome.appendChild(option);
+    }
+  }
 
-};
+  gerarNomePokemons()
 
-// let optionsLista = listaTipos.map(gerarLista)
 
-// lista.replaceChildren(...optionsLista)
+
+  const PesquisarPokemonTipo = async () => {
+
+    container.innerHTML = "";
+    // container.setAttribute("class", "cards-loading");
+
+    for (let index = 1; index <= 151;index++) {
+
+      
+
+      const pokemon = await pesquisarPokemon(index)
+
+      if (pokemon.types[0].type.name == pesquisaTipoUm.value) {
+        container.appendChild(await criarCard(pokemon))
+        
+      } else {
+
+        if (pokemon.types.length == 2) {
+
+          if (pokemon.types[1].type.name == pesquisaTipoUm.value) {
+            container.appendChild( await criarCard(pokemon))
+          }
+        }
+      }
+    }
+
+
+    }
+
+  const pesquisarPorTipo = async () =>{
+
+    if (pesquisaTipoUm.value != "" || pesquisaTipoDois.value != "") {
+         PesquisarPokemonTipo()
+    }else {
+      console.log("erro")
+    }
+
+
+  }
+
+  pesquisar.addEventListener("click",PesquisarPokemonTipo)
+
+
