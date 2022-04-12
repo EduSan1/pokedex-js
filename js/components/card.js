@@ -88,6 +88,10 @@ const pesquisarPokemon = async (index) => {
 
 };
 
+const imprimirCard = () => {
+console.log(card)
+}
+
 const gerarCars = async () => {
 
     while ( index <= 250 ){
@@ -99,7 +103,8 @@ const gerarCars = async () => {
 
     container.setAttribute("class", "cards");
     container.replaceChildren(...pokemons)
-
+    const card = document.getElementsByClassName('card')
+    card.addEventListener("click",imprimirCard )
 }
 
 gerarCars()

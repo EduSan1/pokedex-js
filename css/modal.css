@@ -1,0 +1,119 @@
+.modal {
+
+    width: 100%;
+    height: 80vh;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: 10px solid #777777;
+    display: flex;
+    padding: 40px;
+    gap: 40px;
+
+}
+.modal-imagem{
+
+    width: 40vh;
+    height: 40vh;
+
+
+}
+.modal-imagem >img{
+
+    width: inherit;
+    height: inherit;
+
+}
+.modal-imagem >img:nth-child(1){
+
+    position: absolute;
+    z-index: 1;
+
+}
+
+.modal-conteudo{
+
+    width: 70%;
+    height: 40%;
+    
+}
+.modal-numero{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    font-size: 42px;
+    
+}
+.modal-informacoes{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+.modal-nome{
+    font-size: 72px;
+    margin-bottom: 3vh;
+    font-weight: 600;
+    color: #2f2f2f;
+
+}
+
+.modal-elementos{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 5vw;
+}
+
+.modal-elemento-grass,
+.modal-elemento-fire,
+.modal-elemento-water,
+.modal-elemento-bug,
+.modal-elemento-normal,
+.modal-elemento-poison,
+.modal-elemento-electric,
+.modal-elemento-ground,
+.modal-elemento-fairy,
+.modal-elemento-rock,
+.modal-elemento-ghost,
+.modal-elemento-ice,
+.modal-elemento-dragon,
+.modal-elemento-psychic,
+.modal-elemento-fighting,
+.modal-elemento-flying,
+.modal-elemento-steel,
+.modal-elemento-dark
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    min-width: 180px;
+    height: 50px;
+    border-radius: 6px;
+    border: 2px solid #2f2f2f;
+    text-align: center;
+    font-size: clamp(1rem,3vw,1.8rem);
+}
+
+.modal-elemento-grass{background-color: #78c850 ;}
+.modal-elemento-fire{background-color: #f88030 ;}
+.modal-elemento-water{background-color: #6890f8 ;}
+.modal-elemento-bug{background-color: #a8b820 ;}
+.modal-elemento-normal{background-color: #a8a878 ;}
+.modal-elemento-poison{background-color: #a040a0 ;}
+.modal-elemento-electric{background-color: #f8d030 ;}
+.modal-elemento-ground{background-color: #e0c068 ;}
+.modal-elemento-fairy{background-color: #ee99ac ;}
+.modal-elemento-rock{background-color: #b8a838 ;}
+.modal-elemento-ghost{background-color: #705898 ;}
+.modal-elemento-ice{background-color: #98d8d8 ;}
+.modal-elemento-dragon{background-color: #7038f8 ;}
+.modal-elemento-psychic{background-color: #f85888 ;}
+.modal-elemento-fighting{background-color: #c03028 ;}
+.modal-elemento-flying{background-color: #74a0f3 ;}
+.modal-elemento-steel{background-color: #C0C0C0 ; }
+.modal-elemento-dark{background-color: #242424 ; color: white;}

@@ -1,4 +1,5 @@
 import { pesquisarPokemon, criarCard, gerarCars } from "./components/card.js";
+import { criarModal } from "./components/modal.js";
 const container = document.querySelector('#cards-container')
 
 const pokemonsPesquisa = [];
@@ -67,48 +68,40 @@ const PesquisarPokemonTipo = async () => {
       }
     }
   }
-         container.innerHTML = '';
+  container.innerHTML = '';
   container.setAttribute("class", "cards");
   container.replaceChildren(...pokemonsFiltro)
 
 }
 
-const PesquisarPokemonNome = async () => {
+const PesquisarPokemonNome = async (nome) => {
 
   container.innerHTML = '<img class="loading" src="img/fundo-pokebola.png" alt="">';
   container.setAttribute("class", "cards-loading");
-
-  for (let index = 1; index <= 250; index++) {
-    const pokemon = await pesquisarPokemon(index)
-    if (pokemon.name == pesquisaNome.value) {
-      container.innerHTML = '';
-      container.setAttribute("class", "cards");
-      container.appendChild(await criarCard(pokemon))
-      index = 250;
-    }
-  }
-
-
+  const pokemon = await pesquisarPokemon(nome)
+  container.innerHTML = '';
+  container.setAttribute("class", "cards");
+  container.appendChild(await criarModal(pokemon))
 }
 
 const pesquisarPorTipo = async () => {
-if (pesquisaNome.value != "") {
-  PesquisarPokemonNome()
-}else {
-    if (pesquisaTipoUm.value != "") {
-    PesquisarPokemonTipo()
-    
+  if (pesquisaNome.value != "") {
+    PesquisarPokemonNome(pesquisaNome.value)
   } else {
-    gerarCars()
+    if (pesquisaTipoUm.value != "") {
+      PesquisarPokemonTipo()
+
+    } else {
+      gerarCars()
+    }
   }
-}
 
 
 
 }
 
 pesquisar.addEventListener("click", pesquisarPorTipo)
-pesquisaNome.addEventListener("click", () => {pesquisaTipoUm.value = ""})
-pesquisaTipoUm.addEventListener("click", () => {pesquisaNome.value = "";pesquisaTipoUm.value = ""})
+pesquisaNome.addEventListener("click", () => { pesquisaTipoUm.value = "" })
+pesquisaTipoUm.addEventListener("click", () => { pesquisaNome.value = ""; pesquisaTipoUm.value = "" })
 
 
