@@ -11,23 +11,22 @@
 
 }
 .modal-imagem{
-
-    width: 40vh;
-    height: 40vh;
-
-
+    width: 20vw;
+    height: 20vw;
+    min-width: 240px;
+    min-height: 240px;
 }
 .modal-imagem >img{
 
     width: inherit;
     height: inherit;
+    min-width: inherit;
+    min-height: inherit;
 
 }
 .modal-imagem >img:nth-child(1){
-
     position: absolute;
     z-index: 1;
-
 }
 
 .modal-conteudo{
@@ -117,3 +116,67 @@
 .modal-elemento-flying{background-color: #74a0f3 ;}
 .modal-elemento-steel{background-color: #C0C0C0 ; }
 .modal-elemento-dark{background-color: #242424 ; color: white;}
+
+@media (max-width:900px) {
+    .modal {
+        border: 5px solid #777777;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+    .modal-numero{
+        font-size: 24px;
+        width: 140%;
+    }
+    .modal-imagem{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 30vw;
+        min-width: 200px;
+        min-height: 200px;
+    }
+    .modal-imagem >img{
+        width: 30vw;
+    }
+    .modal-nome{
+        font-size: clamp(1rem,7vw,5rem);
+        margin-bottom: 3vh;
+        font-weight: 600;
+        color: #2f2f2f;
+    }
+    .modal-elementos{
+        justify-content: center;
+        width: 140%;
+    }
+    
+    .modal-elemento-grass,
+    .modal-elemento-fire,
+    .modal-elemento-water,
+    .modal-elemento-bug,
+    .modal-elemento-normal,
+    .modal-elemento-poison,
+    .modal-elemento-electric,
+    .modal-elemento-ground,
+    .modal-elemento-fairy,
+    .modal-elemento-rock,
+    .modal-elemento-ghost,
+    .modal-elemento-ice,
+    .modal-elemento-dragon,
+    .modal-elemento-psychic,
+    .modal-elemento-fighting,
+    .modal-elemento-flying,
+    .modal-elemento-steel,
+    .modal-elemento-dark
+    {
+        padding: 2px;
+        min-width: 120px;
+        height: auto;
+        border-radius: 9px;
+        border: 2px solid #2f2f2f;
+        font-size: clamp(1rem,3vw,1.8rem);
+    }
+    
+}

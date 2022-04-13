@@ -152,10 +152,55 @@
 
 @media (max-width:600px) {
     .cards {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         gap: 30px;
-        padding: 50px 0px;
+        padding: 50px 6vw;
     }
+    .card {
+        border: 2px solid #616161;
+        border-radius: 10px;
+        width: 160px;
+        min-width: 160px;
+        height: 75px;
+        padding: 5px 10px;
+    }  
+    .card-imagem {
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+    }
+    
+    .numero {
+        font-size:.6rem;
+    }
+    
+    .nome {
+        font-size: .7rem;
+    }
+    .elemento-grass,
+    .elemento-fire,
+    .elemento-water,
+    .elemento-bug,
+    .elemento-normal,
+    .elemento-poison,
+    .elemento-electric,
+    .elemento-ground,
+    .elemento-fairy,
+    .elemento-rock,
+    .elemento-ghost,
+    .elemento-ice,
+    .elemento-dragon,
+    .elemento-psychic,
+    .elemento-fighting,
+    .elemento-flying,
+    .elemento-steel,
+    .elemento-dark
+    {
+        padding: 2px;
+        min-width: 30px;
+        border-radius: 3px;
+        border: 1px solid #2f2f2f;
+        text-align: center;
+        font-size:.5rem;
+    }
+    
 }

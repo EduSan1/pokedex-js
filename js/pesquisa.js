@@ -74,25 +74,33 @@ const PesquisarPokemonTipo = async () => {
 
 }
 
-const PesquisarPokemonNome = async (nome) => {
+const PesquisarPokemonNome = async (pokemon) => {
 
   container.innerHTML = '<img class="loading" src="img/fundo-pokebola.png" alt="">';
   container.setAttribute("class", "cards-loading");
-  const pokemon = await pesquisarPokemon(nome)
+  // const pokemon = await pesquisarPokemon(nome)
   container.innerHTML = '';
   container.setAttribute("class", "cards");
   container.appendChild(await criarModal(pokemon))
 }
 
-const pesquisarPorTipo = async () => {
+const verificarPesquisa = async () => {
   if (pesquisaNome.value != "") {
-    PesquisarPokemonNome(pesquisaNome.value)
+    const pokemon = await pesquisarPokemon(pesquisaNome.value)
+    console.log(pokemon)
+    if (pokemon) {
+      console.log(pokemon)
+      PesquisarPokemonNome(pokemon)
+    }else {
+      alert("insira um nome valido")
+    }
+    
   } else {
     if (pesquisaTipoUm.value != "") {
       PesquisarPokemonTipo()
 
     } else {
-      gerarCars()
+      alert("insira um tipo valido")
     }
   }
 
@@ -100,7 +108,7 @@ const pesquisarPorTipo = async () => {
 
 }
 
-pesquisar.addEventListener("click", pesquisarPorTipo)
+pesquisar.addEventListener("click", verificarPesquisa)
 pesquisaNome.addEventListener("click", () => { pesquisaTipoUm.value = "" })
 pesquisaTipoUm.addEventListener("click", () => { pesquisaNome.value = ""; pesquisaTipoUm.value = "" })
 
