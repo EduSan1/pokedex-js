@@ -1,13 +1,7 @@
 "use strict";
 
-// const todosPokemon = async () => {
-//     const url = `https://pokeapi.co/api/v2/pokemon`;
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     return data
-//   };
+import { PesquisarPokemonNome } from "../pesquisa.js";
 
-//   const numeroPokemons = todosPokemon()
 const container = document.querySelector('#cards-container')
 let index = 1;
 const pokemons = [];
@@ -39,6 +33,8 @@ const pesquisarPokemon = async (index) => {
     let cardConteudoInformacaoElementos = document.createElement("div");
 
     card.setAttribute("class", "card");
+    card.setAttribute("id",".container-cards");
+    card.setAttribute("data-idPokemon",`${pokemon.id}`)
     cardImage.setAttribute("class", "card-imagem");
     imagemFundo.setAttribute("src", "img/fundo-pokebola.png");
     imagemPokemon.setAttribute("src", `${pokemon.sprites.front_default}`);
@@ -88,12 +84,13 @@ const pesquisarPokemon = async (index) => {
 
 };
 
-const imprimirCard = () => {
-console.log(card)
+const handleClick = async(evento) => {
+    const id = evento.target.dataset.idpokemon
+    const pokemon = await pesquisarPokemon(id)
+    PesquisarPokemonNome(pokemon)
 }
 
 const gerarCars = async () => {
-
     while ( index <= 250 ){
         const pokemon = await pesquisarPokemon(index)
         pokemons.push(await criarCard(pokemon))
@@ -104,10 +101,18 @@ const gerarCars = async () => {
     container.setAttribute("class", "cards");
     container.replaceChildren(...pokemons)
     const card = document.getElementsByClassName('card')
-    card.addEventListener("click",imprimirCard )
+    container.addEventListener('click', handleClick)
+    // card.addEventListener("click",imprimirCard )
+// const cards = document.querySelector('.container-cards')
+console.log(card)
+
 }
 
 gerarCars()
+
+
+
+
 
 export {pesquisarPokemon,criarCard,gerarCars}
 

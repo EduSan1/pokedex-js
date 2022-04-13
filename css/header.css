@@ -35,8 +35,12 @@ header {
     padding: 1vh 1vw;
     font-size: clamp(0.5rem , 3vw, 1rem);
 }
-.pesquisa-tipo-um,
-.pesquisa-tipo-dois {
+.pesquisa-pokemon:hover,
+.pesquisa-tipo-um:hover {
+    cursor: pointer;
+    background-color: #ebebeb;
+}
+.pesquisa-tipo-um {
     width: 11.64vw;
     height: 40%;
     padding: .5vh .5vw;
@@ -47,13 +51,17 @@ header {
     width: 8.42vw;
     height: 2.55vh;
     padding: 1vh 1vw;
-    background-color: #556A9E;
+    background-color: #2c53b4;
     color: #fff;
     font-size: clamp(0.3rem , 1vw, 0.9rem);
     display: flex;
     overflow: hidden;
     align-items: center;
     justify-content: space-around;
+}
+.btnPesquisar:hover {
+    cursor: pointer;
+    background-color: #1f3b81;
 }
 
 .logo {
@@ -63,4 +71,22 @@ header {
 
 .logo >img{
     width: 100%;
+}
+
+@media (max-width:900px) {
+    .pesquisa-pokemon {
+        width: 33vw;
+        height: 20%;
+        font-size: clamp(0.1rem , 3vw, .5rem);
+    }
+    .pesquisa-tipo-um {
+        width: 22vw;
+        height: 15%;
+        font-size: clamp(0.1rem , 3vw, .5rem);
+    }
+    
+    .btnPesquisar {
+        width: 10vw;
+        height: 15%;
+    }
 }

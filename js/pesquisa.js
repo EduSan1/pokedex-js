@@ -112,4 +112,4 @@ pesquisar.addEventListener("click", verificarPesquisa)
 pesquisaNome.addEventListener("click", () => { pesquisaTipoUm.value = "" })
 pesquisaTipoUm.addEventListener("click", () => { pesquisaNome.value = ""; pesquisaTipoUm.value = "" })
 
-
+export {PesquisarPokemonNome}
